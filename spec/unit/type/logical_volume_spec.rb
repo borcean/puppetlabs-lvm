@@ -430,4 +430,18 @@ describe Puppet::Type.type(:logical_volume) do
       )
     }.to_not raise_error
   end
+
+  it 'mounted parameter should not throw an error' do
+    expect {
+      resource = Puppet::Type.type(:logical_volume).new(
+				{
+        :name             => 'lv1',
+        :ensure           => :present,
+        :volume_group     => 'myvg',
+        :size             => '10M',
+        :mounted          => false,
+				}
+      )
+    }.to_not raise_error
+  end
 end

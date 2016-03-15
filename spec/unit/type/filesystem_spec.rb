@@ -28,4 +28,19 @@ describe Puppet::Type.type(:filesystem) do
       )
     }.to_not raise_error
   end
+
+#  it 'does not raise an ArgumentError when mkfs_cmd is provided' do
+#    expect {      resource = Puppet::Type.type(:filesystem).new(
+#      resource = Puppet::Type.type(:filesystem).new(
+#       {
+#        :name     => '/dev/myvg/mylv',
+#        :ensure   => :present,
+#        :options  => '-b 4096 -E stride=32,stripe-width=64',
+#        :mkfs_cmd => 'mkfs -t ext2'
+#        }
+#      )
+#    }.to_not raise_error
+
+#    Facter.value(:mountpoints).should == 'something'
+#  end
 end
