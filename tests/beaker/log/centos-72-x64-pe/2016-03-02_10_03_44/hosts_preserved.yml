@@ -1,0 +1,259 @@
+---
+HOSTS:
+  10.255.12.51: !ruby/hash:Beaker::Options::OptionsHash
+    :roles:
+    - master
+    - dashboard
+    - database
+    - agent
+    :platform: !ruby/string:Beaker::Platform
+      str: el-7-x86_64
+      variant: !ruby/string:Beaker::Platform el
+      arch: !ruby/string:Beaker::Platform x86_64
+      version: !ruby/string:Beaker::Platform '7'
+      codename: 
+    :box: puppetlabs/centos-7.2-64-nocm
+    :box_url: https://vagrantcloud.com/puppetlabs/boxes/centos-7.2-64-nocm
+    :hypervisor: vagrant
+    :user: root
+    :group: puppet
+    :pathseparator: ":"
+    :host_tags: !ruby/hash:Beaker::Options::OptionsHash {}
+    :ip: 10.255.12.51
+    :box_check_update: 'true'
+    :netmask: 255.255.0.0
+    :ssh: !ruby/hash:Beaker::Options::OptionsHash
+      :config: "/tmp/centos-72-x64-master20160302-1991-i7ry0z"
+      :user: root
+    :puppetserver-confdir: "/etc/puppetlabs/puppetserver/conf.d"
+    :puppetservice: pe-puppetserver
+    :puppetpath: "/etc/puppetlabs/puppet"
+    :puppetconfdir: "/etc/puppetlabs/puppet"
+    :puppetbin: "/opt/puppet/bin/puppet"
+    :puppetbindir: "/opt/puppetlabs/bin"
+    :puppetsbindir: "/opt/puppet/sbin"
+    :privatebindir: "/opt/puppetlabs/puppet/bin"
+    :puppetvardir: "/var/opt/lib/pe-puppet"
+    :hieradatadir: "/var/lib/hiera"
+    :hieraconf: "/etc/puppetlabs/puppet/hiera.yaml"
+    :distmoduledir: "/etc/puppetlabs/code/modules"
+    :sitemoduledir: "/opt/puppetlabs/puppet/modules"
+    :type: pe
+    :pe_ver: 2015.3.2
+    :pe_installer: puppet-enterprise-installer
+    :dist: puppet-enterprise-2015.3.2-el-7-x86_64
+    :working_dir: "/tmp/2016-03-02_10.11.30.mUrobD"
+    :answers: !ruby/hash:Beaker::Options::OptionsHash
+      :q_install: y
+      :q_vendor_packages_install: y
+      :q_puppetagent_install: y
+      :q_verify_packages: y
+      :q_puppet_symlinks_install: y
+      :q_puppetagent_certname: centos-72-x64-master
+      :q_puppetmaster_install: y
+      :q_all_in_one_install: y
+      :q_puppet_enterpriseconsole_install: y
+      :q_puppetdb_install: y
+      :q_database_install: y
+      :q_puppetagent_server: centos-72-x64-master
+      :q_puppetdb_hostname: centos-72-x64-master
+      :q_puppetdb_port: 8081
+      :q_puppetmaster_dnsaltnames: centos-72-x64-master,10.255.12.51,puppet
+      :q_puppetmaster_enterpriseconsole_hostname: centos-72-x64-master
+      :q_puppetmaster_enterpriseconsole_port: 443
+      :q_puppetmaster_certname: centos-72-x64-master
+      :q_puppetdb_database_name: pe-puppetdb
+      :q_puppetdb_database_user: mYpdBu3r
+      :q_puppetdb_database_password: "'~!@#$%^*-/ aZ'"
+      :q_puppet_enterpriseconsole_auth_database_name: console_auth
+      :q_puppet_enterpriseconsole_auth_database_user: mYu7hu3r
+      :q_puppet_enterpriseconsole_auth_database_password: "'~!@#$%^*-/ aZ'"
+      :q_puppet_enterpriseconsole_database_name: console
+      :q_puppet_enterpriseconsole_database_user: mYc0nS03u3r
+      :q_puppet_enterpriseconsole_database_password: "'~!@#$%^*-/ aZ'"
+      :q_database_host: centos-72-x64-master
+      :q_database_port: 5432
+      :q_pe_database: y
+      :q_puppet_enterpriseconsole_inventory_hostname: centos-72-x64-master
+      :q_puppet_enterpriseconsole_inventory_certname: centos-72-x64-master
+      :q_puppet_enterpriseconsole_inventory_dnsaltnames: centos-72-x64-master
+      :q_puppet_enterpriseconsole_inventory_port: 8140
+      :q_puppet_enterpriseconsole_master_hostname: centos-72-x64-master
+      :q_puppet_enterpriseconsole_auth_user_email: "'admin@example.com'"
+      :q_puppet_enterpriseconsole_auth_password: "'~!@#$%^*-/ aZ'"
+      :q_puppet_enterpriseconsole_httpd_port: 443
+      :q_puppet_enterpriseconsole_smtp_host: "'centos-72-x64-master'"
+      :q_puppet_enterpriseconsole_smtp_use_tls: "'n'"
+      :q_puppet_enterpriseconsole_smtp_port: "'25'"
+      :q_database_root_password: "'=ZYdjiP3jCwV5eo9s1MBd'"
+      :q_database_root_user: pe-postgres
+      :q_pe_check_for_updates: n
+      :q_classifier_database_user: DFGhjlkj
+      :q_classifier_database_name: pe-classifier
+      :q_classifier_database_password: "'~!@#$%^*-/ aZ'"
+      :q_activity_database_user: adsfglkj
+      :q_activity_database_name: pe-activity
+      :q_activity_database_password: "'~!@#$%^*-/ aZ'"
+      :q_rbac_database_user: RbhNBklm
+      :q_rbac_database_name: pe-rbac
+      :q_rbac_database_password: "'~!@#$%^*-/ aZ'"
+      :q_exit_for_nc_migrate: n
+      :q_enable_future_parser: n
+      :q_update_server_host: centos-72-x64-master
+      :q_install_update_server: y
+      :q_orchestrator_database_name: pe-orchestrator
+      :q_orchestrator_database_user: Orc3Str8R
+      :q_orchestrator_database_password: "'~!@#$%^*-/ aZ'"
+      :q_use_application_services: y
+  10.255.181.93: !ruby/hash:Beaker::Options::OptionsHash
+    :roles:
+    - default
+    - agent
+    - aio
+    :platform: !ruby/string:Beaker::Platform
+      str: el-7-x86_64
+      variant: !ruby/string:Beaker::Platform el
+      arch: !ruby/string:Beaker::Platform x86_64
+      version: !ruby/string:Beaker::Platform '7'
+      codename: 
+    :box: puppetlabs/centos-7.2-64-nocm
+    :box_url: https://vagrantcloud.com/puppetlabs/boxes/centos-7.2-64-nocm
+    :hypervisor: vagrant
+    :user: root
+    :group: puppet
+    :pathseparator: ":"
+    :host_tags: !ruby/hash:Beaker::Options::OptionsHash {}
+    :ip: 10.255.181.93
+    :box_check_update: 'true'
+    :netmask: 255.255.0.0
+    :ssh: !ruby/hash:Beaker::Options::OptionsHash
+      :config: "/tmp/centos-72-x64-agent20160302-1991-1tfxvrj"
+      :user: root
+    :puppetserver-confdir: "/etc/puppetlabs/puppetserver/conf.d"
+    :puppetservice: pe-puppetserver
+    :puppetpath: "/etc/puppetlabs/puppet"
+    :puppetconfdir: "/etc/puppetlabs/puppet"
+    :puppetbin: "/opt/puppet/bin/puppet"
+    :puppetbindir: "/opt/puppetlabs/bin"
+    :puppetsbindir: "/opt/puppet/sbin"
+    :privatebindir: "/opt/puppetlabs/puppet/bin"
+    :puppetvardir: "/var/opt/lib/pe-puppet"
+    :hieradatadir: "/var/lib/hiera"
+    :hieraconf: "/etc/puppetlabs/puppet/hiera.yaml"
+    :distmoduledir: "/etc/puppetlabs/code/modules"
+    :sitemoduledir: "/opt/puppetlabs/puppet/modules"
+    :type: aio
+    :pe_ver: 2015.3.2
+    :answers: !ruby/hash:Beaker::Options::OptionsHash
+      :q_install: y
+      :q_vendor_packages_install: y
+      :q_puppetagent_install: y
+      :q_verify_packages: y
+      :q_puppet_symlinks_install: y
+      :q_puppetagent_certname: centos-72-x64-agent
+      :q_puppetmaster_install: n
+      :q_all_in_one_install: n
+      :q_puppet_enterpriseconsole_install: n
+      :q_puppetdb_install: n
+      :q_database_install: n
+      :q_puppetagent_server: centos-72-x64-master
+      :q_exit_for_nc_migrate: n
+      :q_enable_future_parser: n
+      :q_update_server_host: centos-72-x64-master
+CONFIG: !ruby/hash:Beaker::Options::OptionsHash
+  :log_level: debug
+  :color: false
+  :consoleport: 443
+  :pe_dir: "/home/mrsj/work/puppet/pe/"
+  :project: Beaker
+  :department: unknown
+  :created_by: mrsj
+  :host_tags: !ruby/hash:Beaker::Options::OptionsHash {}
+  :openstack_api_key: 
+  :openstack_username: 
+  :openstack_auth_url: "/tokens"
+  :openstack_tenant: 
+  :openstack_keyname: 
+  :openstack_network: 
+  :openstack_region: 
+  :jenkins_build_url: 
+  :validate: true
+  :configure: true
+  :trace_limit: 10
+  :master-start-curl-retries: 120
+  :masterless: false
+  :options_file: 
+  :type: pe
+  :provision: false
+  :preserve_hosts: always
+  :root_keys: false
+  :quiet: false
+  :project_root: "/home/mrsj/work/puppet/puppetlabs-lvm/.bundle/gems/ruby/2.1.0/gems/beaker-2.35.0/lib/beaker"
+  :xml_dir: junit
+  :xml_file: beaker_junit.xml
+  :xml_time: beaker_times.xml
+  :xml_time_enabled: false
+  :xml_stylesheet: junit.xsl
+  :log_dir: log
+  :log_sut_event: sut.log
+  :dry_run: false
+  :tag_includes: []
+  :tag_excludes: []
+  :timeout: 900
+  :fail_mode: slow
+  :accept_all_exit_codes: false
+  :timesync: false
+  :disable_iptables: false
+  :set_env: true
+  :disable_updates: true
+  :repo_proxy: false
+  :package_proxy: false
+  :add_el_extras: false
+  :epel_url: http://mirrors.kernel.org/fedora-epel
+  :epel_arch: i386
+  :epel_7_pkg: epel-release-7-5.noarch.rpm
+  :epel_6_pkg: epel-release-6-8.noarch.rpm
+  :epel_5_pkg: epel-release-5-4.noarch.rpm
+  :pe_version_file: LATEST
+  :pe_version_file_win: LATEST-win
+  :host_env: !ruby/hash:Beaker::Options::OptionsHash {}
+  :host_name_prefix: 
+  :ssh_env_file: "~/.ssh/environment"
+  :profile_d_env_file: "/etc/profile.d/beaker_env.sh"
+  :dot_fog: "/home/mrsj/.fog"
+  :ec2_yaml: config/image_templates/ec2.yaml
+  :help: false
+  :collect_perf_data: none
+  :puppetdb_port_ssl: 8081
+  :puppetdb_port_nonssl: 8080
+  :puppetserver_port: 8140
+  :nodeclassifier_port: 4433
+  :cache_files_locally: true
+  :aws_keyname_modifier: '1683995226'
+  :ssh: !ruby/hash:Beaker::Options::OptionsHash
+    :config: false
+    :paranoid: false
+    :auth_methods:
+    - publickey
+    :port: 22
+    :forward_agent: true
+    :keys:
+    - "/home/mrsj/.ssh/id_rsa-acceptance"
+    :user_known_hosts_file: "/home/mrsj/.ssh/known_hosts"
+    :keepalive: true
+  :hosts_file: "/home/mrsj/work/puppet/beaker-nodesets/centos-72-x64-pe.yml"
+  :pre_suite: []
+  :tests: []
+  :keyfile: "/home/mrsj/.ssh/id_rsa-acceptance"
+  :load_path:
+  - lib
+  :command_line: "/home/mrsj/work/puppet/puppetlabs-lvm/.bundle/gems/ruby/2.1.0/bin/beaker
+    --preserve-host --host /home/mrsj/work/puppet/beaker-nodesets/centos-72-x64-pe.yml
+    --debug --pre-suite pre-suite --tests tests --keyfile /home/mrsj/.ssh/id_rsa-acceptance
+    --load-path lib"
+  :home: "/home/mrsj"
+  :helper: []
+  :post_suite: []
+  :install: []
+  :modules: []
+  :beaker_version: 2.35.0

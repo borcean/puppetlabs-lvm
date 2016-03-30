@@ -1,0 +1,712 @@
+[00;32mBegin pre-suite/00_pe_install.rb
+[00;00m[00;34m
+FM-4614 - Cxx - Install Puppet Enterprise
+[00;00m[00;34m
+* Install PE
+[00;00m[00;37m
+centos-72-x64-master 10:32:51$ mktemp -dt 2016-03-02_10.32.51.XXXXXX
+[00;00m[00;33m  /tmp/2016-03-02_10.32.51.Rg5V1z
+[00;00m[00;37m
+centos-72-x64-master executed in 0.04 seconds
+[00;00m[00;34mlocalhost $ scp /home/mrsj/work/puppet/pe//puppet-enterprise-2015.3.2-el-7-x86_64.tar.gz centos-72-x64-master:/tmp/2016-03-02_10.32.51.Rg5V1z/puppet-enterprise-2015.3.2-el-7-x86_64.tar.gz {:ignore => }
+[00;00m[00;37m
+centos-72-x64-master 10:32:58$ cd /tmp/2016-03-02_10.32.51.Rg5V1z; gunzip puppet-enterprise-2015.3.2-el-7-x86_64.tar.gz
+[00;00m[00;37m
+centos-72-x64-master executed in 2.35 seconds
+[00;00m[00;37m
+centos-72-x64-master 10:33:01$ cd /tmp/2016-03-02_10.32.51.Rg5V1z; tar -xvf puppet-enterprise-2015.3.2-el-7-x86_64.tar
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/VERSION
+  puppet-enterprise-2015.3.2-el-7-x86_64/LICENSE.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/puppet-enterprise-support
+  puppet-enterprise-2015.3.2-el-7-x86_64/supported_platforms
+  puppet-enterprise-2015.3.2-el-7-x86_64/puppet-enterprise-installer
+  puppet-enterprise-2015.3.2-el-7-x86_64/puppet-enterprise-uninstaller
+  puppet-enterprise-2015.3.2-el-7-x86_64/utilities
+  puppet-enterprise-2015.3.2-el-7-x86_64/db_import_export.rake
+  puppet-enterprise-2015.3.2-el-7-x86_64/environments.rake
+  puppet-enterprise-2015.3.2-el-7-x86_64/update-superuser-password.rb
+  puppet-enterprise-2015.3.2-el-7-x86_64/pe-code-migration.rb
+  puppet-enterprise-2015.3.2-el-7-x86_64/pe-classification.rb
+  puppet-enterprise-2015.3.2-el-7-x86_64/README.markdown
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64-package-versions.json
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-activemq-5.13.0-2.pe.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-bundler-1.8.2-3.pe.el7.noarch.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-client-tools-1.0.1-1.el7.x86_64.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-console-services-1.2.110-1.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-console-services-termini-1.2.110-1.el7.noarch.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-installer-2015.3.2-1.el7.x86_64.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-java-1.8.0.71-1.b15.pe.el7.x86_64.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-license-0.1.5.7-1.pe.el7.noarch.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-nginx-1.8.0-9.pe.el7.x86_64.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-orchestration-services-0.3.1-1.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-postgresql-9.4.5-2.pe.el7.x86_64.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-postgresql-contrib-9.4.5-2.pe.el7.x86_64.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-postgresql-devel-9.4.5-2.pe.el7.x86_64.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-postgresql-server-9.4.5-2.pe.el7.x86_64.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-puppet-enterprise-release-2015.3.2.0-1.pe.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-puppet-license-cli-0.1.7.20-1.pe.el7.noarch.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-puppetdb-3.2.3-1.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-puppetdb-termini-3.2.3-1.el7.noarch.rpm
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-puppetserver-2.2.40-1.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-r10k-2.1.1.0-1.el7.x86_64.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-razor-libs-1.0.1-9.pe.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/pe-razor-server-1.1.0.1-1.pe.el7.noarch.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/puppet-agent-1.3.5-1.el7.x86_64.rpm
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/b8a00d1349909d60192e7f66f1737c727e908111-other.sqlite.bz2
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/e4d4a5e2229ba3619ad2c29a73b9614943876f0b-other.xml.gz
+[00;00m[00;33m  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/c153f0608920d953e09a0e2690d434886522211e-filelists.sqlite.bz2
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/e358f0ce3a49b1af48f5ff720638662ca93b83bb-filelists.xml.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/9f6ae84682e81f9d12d324a3c5b878dd2600a651-primary.sqlite.bz2
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/79cd6fc8827c06e963f30b337654e9f17f87ce08-primary.xml.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/repomd.xml
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/install_modules.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_accounts-2.0.2-6-gd2f698c.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_concat-1.1.2-7-g77ec55b.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_console_prune-0.1.1-9-gfc256c0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_hocon-2015.3.0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_inifile-1.1.4-16-gcb39966.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_java_ks-1.2.4-37-g2d86015.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_nginx-2015.2.0-rc0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_postgresql-2015.3.0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_puppet_authorization-2015.3.0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_puppetdbquery-2015.3.0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_r10k-2015.3.0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_razor-0.2.1-84-gbb045d2.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_repo-2015.3.3-4-gcf7f1ac.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-pe_staging-2015.3.0.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/puppetlabs-puppet_enterprise-2015.3.2.tar.gz
+  puppet-enterprise-2015.3.2-el-7-x86_64/modules/whitelist_modules.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/answers/all-in-one.answers.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/answers/complete-answers.answers.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/answers/split-console.answers.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/answers/split-master.answers.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/answers/split-puppetdb.answers.txt
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/autosign.conf.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/check-auth.conf.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/console.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/master.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/pe_repo.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/postgresql_server.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/puppet.conf.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/puppet_enterprise.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/puppetdb.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/erb/site.pp.erb
+  puppet-enterprise-2015.3.2-el-7-x86_64/gpg/GPG-KEY-puppetlabs
+  puppet-enterprise-2015.3.2-el-7-x86_64/noask/solaris-noask
+  puppet-enterprise-2015.3.2-el-7-x86_64/packages/el-7-x86_64/repodata/repomd.xml.asc
+[00;00m[00;37m
+centos-72-x64-master executed in 0.68 seconds
+[00;00m[00;34mlocalhost $ scp /tmp/beaker20160302-10491-1jf7sn centos-72-x64-master:/tmp/2016-03-02_10.32.51.Rg5V1z/answers {:ignore => }
+[00;00m[00;37m
+centos-72-x64-master 10:33:01$ cd /tmp/2016-03-02_10.32.51.Rg5V1z/puppet-enterprise-2015.3.2-el-7-x86_64 && ./puppet-enterprise-installer -a /tmp/2016-03-02_10.32.51.Rg5V1z/answers
+[00;00m[00;33m  ========================================================================
+  
+  Puppet Enterprise v2015.3.2 installer
+  
+  Puppet Enterprise documentation can be found at http://docs.puppetlabs.com/pe/2015.3/
+[00;00m[00;33m
+[00;00m[00;33m  ------------------------------------------------------------------------
+  
+  STEP 1: READ ANSWERS FROM FILE
+  
+  ## Reading answers from file: /tmp/2016-03-02_10.32.51.Rg5V1z/answers
+[00;00m[00;33m  
+  ------------------------------------------------------------------------
+  
+  STEP 2: SELECT AND CONFIGURE ROLES
+[00;00m[00;33m     This installer lets you select and install the various roles
+     required in a Puppet Enterprise deployment: puppet master,
+     console, database, and puppet agent.[00;00m[00;33m  
+  
+  NOTE: when specifying hostnames during installation, use the fully-qualified domain name (foo.example.com) rather than a shortened name (foo).
+[00;00m[00;33m  
+  -> puppet master
+  
+     The puppet master serves configurations to a group of puppet
+     agent nodes. This role also provides MCollective's message queue
+     and client interface. It should be installed on a robust,
+     dedicated server.
+[00;00m[00;33m  ?? Install puppet master? [y/N][00;00m[00;33m   y
+[00;00m[00;33m  
+  -> standalone install
+  
+     You may choose to either install PuppetDB and the console on this
+     node, or to install each service on its own node. If you choose
+     not to install PuppetDB and the console on this node, you will be
+     asked where to find them.
+[00;00m[00;33m  ?? Install PuppetDB and console on this node? [Y/n][00;00m[00;33m   y
+[00;00m[00;33m  
+  -> puppet agent
+  
+     The puppet agent role is automatically installed with the
+     console, puppet master, and puppetdb roles.
+[00;00m[00;33m  ?? The puppet master's certificate will contain a unique name
+     ("certname"); this should be the main DNS name at which it can be
+     reliably reached. Puppet master's certname? [Default:
+     centos-72-x64-master.][00;00m[00;33m   centos-72-x64-master
+[00;00m[00;33m  ?? The puppet master's certificate can contain DNS aliases; agent
+     nodes will only trust the master if they reach it at its certname
+     or one of these official aliases. Puppet master's DNS aliases
+     (comma-separated list)? [Default: centos-72-x64-master,puppet][00;00m[00;33m   centos-72-x64-master,10.255.61.229,puppet
+[00;00m[00;33m
+[00;00m[00;33m     The Puppet Enterprise console and PuppetDB require a PostgreSQL
+     database and a user account able to edit it. Puppet Enterprise
+     includes a Postgresql server which you can install locally, or
+     you can specify an existing remote database (which must be
+     configured and available prior to installing the console or
+     PuppetDB).[00;00m[00;33m
+[00;00m[00;33m  ?? Install the included Puppet Enterprise PostgreSQL server locally?
+     [Y/n][00;00m[00;33m   y
+[00;00m[00;33m  ?? Password for Puppet Enterprise Console superuser 'admin' (minimum
+     8 characters)?[00;00m[00;33m   
+[00;00m[00;33m  
+  -> Vendor Packages
+  
+     The installer has detected that Puppet Enterprise requires
+     additional packages from your operating system vendor's
+     repositories, and can automatically install them. If you choose
+     not to install these packages automatically, the installer will
+     exit so you can install them manually.
+[00;00m[00;33m     Additional vendor packages required for installation:[00;00m[00;33m
+[00;00m[00;33m     * libjpeg
+     * libxslt
+     * mailcap
+     * pciutils
+[00;00m[00;33m
+[00;00m[00;33m  ?? Install these packages automatically? [Y/n][00;00m[00;33m   y
+[00;00m[00;33m  ?? Enable the file sync service? (this will default to 'y' on an
+     install and 'n' on an upgrade when upgrading from a version prior
+     to 2015.3) [Y/n][00;00m[00;33m   y
+  
+  ------------------------------------------------------------------------
+  
+  STEP 3: CONFIRM PLAN
+  
+  You have selected to install the following components (and their dependencies)
+  * Puppet Master
+  * PuppetDB
+  * Console
+  * Puppet Agent
+[00;00m[00;33m  ?? Perform installation? [Y/n][00;00m[00;33m   y
+[00;00m[00;33m  ## Answers saved in the following files: /tmp/2016-03-02_10.32.51.Rg5V1z/puppet-enterprise-2015.3.2-el-7-x86_64/answers.lastrun.centos-72-x64-master. and /etc/puppetlabs/installer/answers.install
+  
+  ========================================================================
+[00;00m[00;33m  
+  ------------------------------------------------------------------------
+  
+  STEP 4: INSTALL PACKAGES
+[00;00m[00;33m  ## Installing packages from repositories...
+[00;00m[00;33m  Loaded plugins: fastestmirror
+[00;00m[00;33m  Loading mirror speeds from cached hostfile
+[00;00m[00;33m   * base: mirrors.sonic.net
+   * extras: mirror.chpc.utah.edu
+   * updates: mirror-centos.hostingswift.com
+[00;00m[00;33m  Package zlib-1.2.7-15.el7.x86_64 already installed and latest version
+  Package which-2.20-7.el7.x86_64 already installed and latest version
+[00;00m[00;33m  Package net-tools-2.0-0.17.20131004git.el7.x86_64 already installed and latest version
+[00;00m[00;33m  Package curl-7.29.0-25.el7.centos.x86_64 already installed and latest version
+[00;00m[00;33m  Package centos-logos-70.0.6-3.el7.centos.noarch already installed and latest version
+[00;00m[00;33m  Resolving Dependencies
+  --> Running transaction check
+  ---> Package libjpeg-turbo.x86_64 0:1.2.90-5.el7 will be installed
+[00;00m[00;33m  ---> Package libxml2.x86_64 0:2.9.1-5.el7_1.2 will be updated
+[00;00m[00;33m  ---> Package libxml2.x86_64 0:2.9.1-6.el7_2.2 will be an update
+[00;00m[00;33m  ---> Package libxslt.x86_64 0:1.1.28-5.el7 will be installed
+[00;00m[00;33m  ---> Package mailcap.noarch 0:2.1.41-2.el7 will be installed
+[00;00m[00;33m  ---> Package pciutils.x86_64 0:3.2.1-4.el7 will be installed
+[00;00m[00;33m  ---> Package pe-client-tools.x86_64 0:1.0.1-1.el7 will be installed
+  ---> Package pe-console-services.noarch 0:1.2.110-1.el7 will be installed
+[00;00m[00;33m  ---> Package pe-console-services-termini.noarch 0:1.2.110-1.el7 will be installed
+  ---> Package pe-java.x86_64 0:1.8.0.71-1.b15.pe.el7 will be installed
+  ---> Package pe-license.noarch 0:0.1.5.7-1.pe.el7 will be installed
+  ---> Package pe-nginx.x86_64 0:1.8.0-9.pe.el7 will be installed
+[00;00m[00;33m  ---> Package pe-orchestration-services.noarch 0:0.3.1-1.el7 will be installed
+  ---> Package pe-postgresql.x86_64 0:9.4.5-2.pe.el7 will be installed
+  ---> Package pe-postgresql-contrib.x86_64 0:9.4.5-2.pe.el7 will be installed
+  ---> Package pe-postgresql-server.x86_64 0:9.4.5-2.pe.el7 will be installed
+  ---> Package pe-puppet-enterprise-release.noarch 0:2015.3.2.0-1.pe.el7 will be installed
+  ---> Package pe-puppet-license-cli.noarch 0:0.1.7.20-1.pe.el7 will be installed
+  ---> Package pe-puppetdb.noarch 0:3.2.3-1.el7 will be installed
+  ---> Package pe-puppetdb-termini.noarch 0:3.2.3-1.el7 will be installed
+  ---> Package pe-puppetserver.noarch 0:2.2.40-1.el7 will be installed
+  ---> Package pe-r10k.x86_64 0:2.1.1.0-1.el7 will be installed
+  ---> Package puppet-agent.x86_64 0:1.3.5-1.el7 will be installed
+[00;00m[00;33m  --> Finished Dependency Resolution
+[00;00m[00;33m  
+  Dependencies Resolved
+  
+  ================================================================================
+   Package               Arch   Version         Repository                   Size
+  ================================================================================
+  Installing:
+   libjpeg-turbo         x86_64 1.2.90-5.el7    base                        134 k
+   libxslt               x86_64 1.1.28-5.el7    base                        242 k
+   mailcap               noarch 2.1.41-2.el7    base                         31 k
+   pciutils              x86_64 3.2.1-4.el7     base                         90 k
+   pe-client-tools       x86_64 1.0.1-1.el7     puppet-enterprise-installer 1.7 M
+   pe-console-services   noarch 1.2.110-1.el7   puppet-enterprise-installer  30 M
+   pe-console-services-termini
+                         noarch 1.2.110-1.el7   puppet-enterprise-installer 5.4 k
+   pe-java               x86_64 1.8.0.71-1.b15.pe.el7
+                                                puppet-enterprise-installer  38 M
+   pe-license            noarch 0.1.5.7-1.pe.el7
+                                                puppet-enterprise-installer 4.9 k
+   pe-nginx              x86_64 1.8.0-9.pe.el7  puppet-enterprise-installer 302 k
+   pe-orchestration-services
+                         noarch 0.3.1-1.el7     puppet-enterprise-installer  35 M
+   pe-postgresql         x86_64 9.4.5-2.pe.el7  puppet-enterprise-installer  12 M
+   pe-postgresql-contrib x86_64 9.4.5-2.pe.el7  puppet-enterprise-installer 525 k
+   pe-postgresql-server  x86_64 9.4.5-2.pe.el7  puppet-enterprise-installer 3.9 M
+   pe-puppet-enterprise-release
+                         noarch 2015.3.2.0-1.pe.el7
+                                                puppet-enterprise-installer  12 k
+   pe-puppet-license-cli noarch 0.1.7.20-1.pe.el7
+                                                puppet-enterprise-installer 5.4 k
+   pe-puppetdb           noarch 3.2.3-1.el7     puppet-enterprise-installer  24 M
+   pe-puppetdb-termini   noarch 3.2.3-1.el7     puppet-enterprise-installer  25 k
+   pe-puppetserver       noarch 2.2.40-1.el7    puppet-enterprise-installer  36 M
+   pe-r10k               x86_64 2.1.1.0-1.el7   puppet-enterprise-installer 6.5 M
+   puppet-agent          x86_64 1.3.5-1.el7     puppet-enterprise-installer  22 M
+  Updating:
+   libxml2               x86_64 2.9.1-6.el7_2.2 updates                     666 k
+  
+  Transaction Summary
+  ================================================================================
+  Install  21 Packages
+  Upgrade   1 Package
+  
+  Total download size: 212 M
+  Downloading packages:
+  Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+[00;00m[00;33m  --------------------------------------------------------------------------------
+  Total                                               70 MB/s | 212 MB  00:03     
+[00;00m[00;33m  Running transaction check
+[00;00m[00;33m  Running transaction test
+[00;00m[00;33m  Transaction test succeeded
+  Running transaction
+[00;00m[00;33m    Installing : puppet-agent-1.3.5-1.el7.x86_64                             1/23[00;00m[00;33m   
+    Installing : pe-puppet-enterprise-release-2015.3.2.0-1.pe.el7.noarch     2/23[00;00m[00;33m   
+    Installing : pe-java-1.8.0.71-1.b15.pe.el7.x86_64                        3/23[00;00m[00;33m   
+    Installing : pe-client-tools-1.0.1-1.el7.x86_64                          4/23[00;00m[00;33m   
+    Installing : pe-license-0.1.5.7-1.pe.el7.noarch                          5/23[00;00m[00;33m   
+    Updating   : libxml2-2.9.1-6.el7_2.2.x86_64                              6/23[00;00m[00;33m   
+    Installing : libxslt-1.1.28-5.el7.x86_64                                 7/23[00;00m[00;33m   
+    Installing : pe-postgresql-9.4.5-2.pe.el7.x86_64                         8/23[00;00m[00;33m   
+    Installing : pe-postgresql-server-9.4.5-2.pe.el7.x86_64                  9/23[00;00m[00;33m   
+    Installing : pe-postgresql-contrib-9.4.5-2.pe.el7.x86_64                10/23[00;00m[00;33m   
+    Installing : pe-puppet-license-cli-0.1.7.20-1.pe.el7.noarch             11/23[00;00m[00;33m   
+    Installing : pe-r10k-2.1.1.0-1.el7.x86_64                               12/23[00;00m[00;33m   
+    Installing : pe-orchestration-services-0.3.1-1.el7.noarch               13/23[00;00m[00;33m   
+    Installing : pe-console-services-1.2.110-1.el7.noarch                   14/23[00;00m[00;33m   
+    Installing : pe-puppetdb-3.2.3-1.el7.noarch                             15/23[00;00m[00;33m   
+    Installing : pe-puppetserver-2.2.40-1.el7.noarch                        16/23[00;00m[00;33m   
+    Installing : pe-nginx-1.8.0-9.pe.el7.x86_64                             17/23[00;00m[00;33m   
+    Installing : pe-console-services-termini-1.2.110-1.el7.noarch           18/23[00;00m[00;33m   
+    Installing : pe-puppetdb-termini-3.2.3-1.el7.noarch                     19/23[00;00m[00;33m   
+    Installing : pciutils-3.2.1-4.el7.x86_64                                20/23[00;00m[00;33m   
+    Installing : mailcap-2.1.41-2.el7.noarch                                21/23[00;00m[00;33m   
+    Installing : libjpeg-turbo-1.2.90-5.el7.x86_64                          22/23[00;00m[00;33m   
+    Cleanup    : libxml2-2.9.1-5.el7_1.2.x86_64                             23/23[00;00m[00;33m   
+    Verifying  : pe-orchestration-services-0.3.1-1.el7.noarch                1/23[00;00m[00;33m   
+    Verifying  : libjpeg-turbo-1.2.90-5.el7.x86_64                           2/23[00;00m[00;33m   
+    Verifying  : mailcap-2.1.41-2.el7.noarch                                 3/23[00;00m[00;33m   
+    Verifying  : pe-java-1.8.0.71-1.b15.pe.el7.x86_64                        4/23[00;00m[00;33m   
+    Verifying  : pciutils-3.2.1-4.el7.x86_64                                 5/23[00;00m[00;33m   
+    Verifying  : pe-postgresql-server-9.4.5-2.pe.el7.x86_64                  6/23[00;00m[00;33m   
+    Verifying  : pe-client-tools-1.0.1-1.el7.x86_64                          7/23[00;00m[00;33m   
+    Verifying  : pe-console-services-1.2.110-1.el7.noarch                    8/23[00;00m[00;33m   
+    Verifying  : pe-console-services-termini-1.2.110-1.el7.noarch            9/23[00;00m[00;33m   
+    Verifying  : pe-puppetdb-termini-3.2.3-1.el7.noarch                     10/23[00;00m[00;33m   
+    Verifying  : pe-puppetdb-3.2.3-1.el7.noarch                             11/23[00;00m[00;33m   
+    Verifying  : pe-r10k-2.1.1.0-1.el7.x86_64                               12/23[00;00m[00;33m   
+    Verifying  : libxslt-1.1.28-5.el7.x86_64                                13/23[00;00m[00;33m   
+    Verifying  : pe-postgresql-9.4.5-2.pe.el7.x86_64                        14/23[00;00m[00;33m   
+    Verifying  : pe-puppet-license-cli-0.1.7.20-1.pe.el7.noarch             15/23[00;00m[00;33m   
+    Verifying  : pe-puppet-enterprise-release-2015.3.2.0-1.pe.el7.noarch    16/23[00;00m[00;33m   
+    Verifying  : pe-nginx-1.8.0-9.pe.el7.x86_64                             17/23[00;00m[00;33m   
+    Verifying  : pe-postgresql-contrib-9.4.5-2.pe.el7.x86_64                18/23[00;00m[00;33m   
+    Verifying  : libxml2-2.9.1-6.el7_2.2.x86_64                             19/23[00;00m[00;33m   
+    Verifying  : pe-puppetserver-2.2.40-1.el7.noarch                        20/23[00;00m[00;33m   
+    Verifying  : pe-license-0.1.5.7-1.pe.el7.noarch                         21/23[00;00m[00;33m   
+    Verifying  : puppet-agent-1.3.5-1.el7.x86_64                            22/23[00;00m[00;33m   
+    Verifying  : libxml2-2.9.1-5.el7_1.2.x86_64                             23/23[00;00m[00;33m   
+  
+  Installed:
+    libjpeg-turbo.x86_64 0:1.2.90-5.el7                                           
+    libxslt.x86_64 0:1.1.28-5.el7                                                 
+    mailcap.noarch 0:2.1.41-2.el7                                                 
+    pciutils.x86_64 0:3.2.1-4.el7                                                 
+    pe-client-tools.x86_64 0:1.0.1-1.el7                                          
+    pe-console-services.noarch 0:1.2.110-1.el7                                    
+    pe-console-services-termini.noarch 0:1.2.110-1.el7                            
+    pe-java.x86_64 0:1.8.0.71-1.b15.pe.el7                                        
+    pe-license.noarch 0:0.1.5.7-1.pe.el7                                          
+    pe-nginx.x86_64 0:1.8.0-9.pe.el7                                              
+    pe-orchestration-services.noarch 0:0.3.1-1.el7                                
+    pe-postgresql.x86_64 0:9.4.5-2.pe.el7                                         
+    pe-postgresql-contrib.x86_64 0:9.4.5-2.pe.el7                                 
+    pe-postgresql-server.x86_64 0:9.4.5-2.pe.el7                                  
+    pe-puppet-enterprise-release.noarch 0:2015.3.2.0-1.pe.el7                     
+    pe-puppet-license-cli.noarch 0:0.1.7.20-1.pe.el7                              
+    pe-puppetdb.noarch 0:3.2.3-1.el7                                              
+    pe-puppetdb-termini.noarch 0:3.2.3-1.el7                                      
+    pe-puppetserver.noarch 0:2.2.40-1.el7                                         
+    pe-r10k.x86_64 0:2.1.1.0-1.el7                                                
+    puppet-agent.x86_64 0:1.3.5-1.el7                                             
+  
+  Updated:
+    libxml2.x86_64 0:2.9.1-6.el7_2.2                                              
+  
+  Complete!
+[00;00m[00;33m  Loaded plugins: fastestmirror
+[00;00m[00;33m  Cleaning repos: puppet-enterprise-installer
+  Cleaning up everything
+[00;00m[00;33m  Cleaning up list of fastest mirrors
+[00;00m[00;33m  Generating mcollective password...
+[00;00m[00;33m  ## Setting up puppet master...
+[00;00m[00;33m  ------------------------------------------------------------------------
+  Applying the following manifest...
+  NOTE: Passwords and secrets are omitted.
+  class { puppet_enterprise:
+    certificate_authority_host   => 'centos-72-x64-master',
+    puppet_master_host           => 'centos-72-x64-master',
+    console_host                 => 'centos-72-x64-master',
+    puppetdb_host                => 'centos-72-x64-master',
+    puppetdb_port                => '8081',
+    database_host                => 'centos-72-x64-master',
+    database_port                => '5432',
+    mcollective_middleware_hosts => ['centos-72-x64-master'],
+    pcp_broker_host              => 'centos-72-x64-master'
+  }
+  class { puppet_enterprise::profile::master:
+      certname                => 'centos-72-x64-master',
+      console_server_certname => 'centos-72-x64-master',
+      classifier_host         => 'centos-72-x64-master',
+  
+  
+  }
+  
+  class { puppet_enterprise::profile::certificate_authority: }
+  
+  class { puppet_enterprise::profile::amq::broker: }
+  class { puppet_enterprise::profile::mcollective::agent: }
+  class { puppet_enterprise::profile::mcollective::peadmin: }
+  
+  class { puppet_enterprise::profile::agent: }
+  
+  class { puppet_enterprise::profile::orchestrator:
+    database_name => 'pe-orchestrator',
+    database_user => 'Orc3Str8R',
+      }
+  ------------------------------------------------------------------------
+[00;00m[00;33m  Notice: Compiled catalog for centos-72-x64-master in environment production in 2.66 seconds
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Pe_ini_setting[puppetserver puppetconf app_management]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Pe_ini_setting[module_groups]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Pe_ini_setting[environmentpath_setting]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Classifier/Pe_ini_setting[node_terminus]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Classifier/File[/etc/puppetlabs/puppet/classifier.yaml]/ensure: defined content as '{md5}1ab917ea8b42fb59e4cf75bed95ee86b'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Auth_conf/File[/etc/puppetlabs/puppet/auth.conf]/content: content changed '{md5}ca30b41233c6192a18478209520dae1b' to '{md5}9afe7ef5e2b77901da2bc735b567cc0b'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Puppetdb/Pe_ini_subsetting[puppetdb.conf_server_urls_centos-72-x64-master]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Puppetdb/Pe_ini_setting[puppetdb.conf_include_unchanged_resources]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Puppetdb/Pe_ini_setting[puppetdb.conf_soft_write_failure]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Puppetdb/Pe_ini_setting[storeconfigs]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Puppetdb/Pe_ini_setting[storeconfigs_backend]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Puppetdb/Pe_ini_subsetting[reports_puppetdb]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master::Puppetdb/File[/etc/puppetlabs/puppet/routes.yaml]/ensure: defined content as '{md5}85f1d4003267907c2975c953bf12d95c'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Packages/Package[pe-activemq]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Symlinks/File[/usr/local/bin/facter]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Symlinks/File[/usr/local/bin/puppet]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Symlinks/File[/usr/local/bin/pe-man]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Symlinks/File[/usr/local/bin/hiera]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Symlinks/File[/usr/local/bin/mco]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Symlinks/File[/usr/local/bin/r10k]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/webserver.conf]/owner: owner changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/webserver.conf]/group: group changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/webserver.conf]/mode: mode changed '0644' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[webserver.puppet-server.ssl-port]/value: value changed ['8140'] to '8140'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[webserver.puppet-server.ssl-cert]/value: value changed ['/etc/puppetlabs/puppet/ssl/certs/localhost.pem'] to '/etc/puppetlabs/puppet/ssl/certs/centos-72-x64-master.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[webserver.puppet-server.ssl-key]/value: value changed ['/etc/puppetlabs/puppet/ssl/private_keys/localhost.pem'] to '/etc/puppetlabs/puppet/ssl/private_keys/centos-72-x64-master.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[webserver.puppet-server.ssl-crl-path]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[webserver.puppet-server.static-content]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/web-routes.conf]/owner: owner changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/web-routes.conf]/group: group changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/web-routes.conf]/mode: mode changed '0644' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[web-router-service/reverse-proxy-ca-service]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/pe-puppet-server.conf]/owner: owner changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/pe-puppet-server.conf]/group: group changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/pe-puppet-server.conf]/mode: mode changed '0644' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[jruby-puppet.ruby-load-path]/value: value changed ['/opt/puppetlabs/puppet/lib/ruby/vendor_ruby'] to '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby /opt/puppetlabs/puppet/cache/lib'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[jruby-puppet.max-requests-per-instance]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[jruby-puppet.use-legacy-auth-conf]/value: value changed ['true'] to 'false'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/global.conf]/owner: owner changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/global.conf]/group: group changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/global.conf]/mode: mode changed '0644' to '0640'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[/etc/puppetlabs/puppetserver/conf.d/global.conf#global.hostname]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[global.certs.ssl-cert]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[global.certs.ssl-key]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[global.certs.ssl-ca-cert]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/metrics.conf]/owner: owner changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/metrics.conf]/group: group changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/metrics.conf]/mode: mode changed '0644' to '0640'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[metrics.server-id]/value: value changed ['localhost'] to 'centos-72-x64-master'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[metrics.reporters.graphite.enabled]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[metrics.reporters.graphite.host]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[metrics.reporters.graphite.port]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[metrics.reporters.graphite.update-interval-seconds]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/rbac-consumer.conf]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[rbac-consumer.api-url]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/File[/etc/puppetlabs/puppetserver/conf.d/activity-consumer.conf]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_hocon_setting[activity-consumer.api-url]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_ini_setting[puppetserver initconf user]/value: value changed '"pe-puppet"' to 'pe-puppet'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_ini_setting[puppetserver initconf group]/value: value changed '"pe-puppet"' to 'pe-puppet'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_ini_setting[puppetserver initconf start_timeout]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master/File[/opt/puppetlabs/server/pe_build]/content: content changed '{md5}d30a914c217c1c0cc4cb9cfc3c7b95df' to '{md5}788ddeda3ff192870c08e6084607bb93'
+  Notice: /Stage[main]/Puppet_enterprise::Master/File[/opt/puppetlabs/server/pe_build]/owner: owner changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master/File[/opt/puppetlabs/server/pe_build]/group: group changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master/Pe_ini_setting[puppetserver puppetconf certname]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master/Pe_ini_setting[puppetserver puppetconf always_cache_features]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Exec[Ensure public dir /opt/puppetlabs/server/data/packages/public]/returns: executed successfully
+  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/File[/etc/puppetlabs/puppetserver/conf.d/file-sync.conf]/owner: owner changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/File[/etc/puppetlabs/puppetserver/conf.d/file-sync.conf]/group: group changed 'root' to 'pe-puppet'
+  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/File[/etc/puppetlabs/puppetserver/conf.d/file-sync.conf]/mode: mode changed '0644' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_hocon_setting[file-sync.client.server-api-url]/value: value changed ['https://localhost:8140/file-sync/v1'] to 'https://centos-72-x64-master:8140/file-sync/v1'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_hocon_setting[file-sync.client.server-repo-url]/value: value changed ['https://localhost:8140/file-sync-git'] to 'https://centos-72-x64-master:8140/file-sync-git'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_hocon_setting[file-sync.client.ssl-cert]/value: value changed ['/etc/puppetlabs/puppet/ssl/certs/localhost.pem'] to '/etc/puppetlabs/puppet/ssl/certs/centos-72-x64-master.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_hocon_setting[file-sync.client.ssl-key]/value: value changed ['/etc/puppetlabs/puppet/ssl/private_keys/localhost.pem'] to '/etc/puppetlabs/puppet/ssl/private_keys/centos-72-x64-master.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_hocon_setting[file-sync.client.enable-forceful-sync]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_hocon_setting[file-sync.preserve-deleted-submodules]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_hocon_setting[pe-puppetserver.enable-file-sync-locking]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/File[/etc/puppetlabs/code]/mode: mode changed '0755' to '0750'
+  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/File[/etc/puppetlabs/code-staging]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Amq::Config/File[/etc/puppetlabs/activemq/activemq.xml]/group: group changed 'root' to 'pe-activemq'
+  Notice: /Stage[main]/Puppet_enterprise::Amq::Config/File[/etc/puppetlabs/activemq/activemq.xml]/mode: mode changed '0755' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/File[/etc/sysconfig/pe-activemq]/content: content changed '{md5}acb5a7fbc5e6e9e2c75897e08ddfb334' to '{md5}6a930c4717ce73fd311ddc1e35e56f20'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Amq::Certs/Pe_java_ks[puppetca:truststore]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Amq::Certs/Pe_java_ks[centos-72-x64-master:keystore]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Amq::Certs/File[/etc/puppetlabs/activemq/broker.ts]/group: group changed 'root' to 'pe-activemq'
+  Notice: /Stage[main]/Puppet_enterprise::Amq::Certs/File[/etc/puppetlabs/activemq/broker.ts]/mode: mode changed '0644' to '0640'
+  Notice: /Stage[main]/Puppet_enterprise::Amq::Certs/File[/etc/puppetlabs/activemq/broker.ks]/group: group changed 'root' to 'pe-activemq'
+  Notice: /Stage[main]/Puppet_enterprise::Amq::Certs/File[/etc/puppetlabs/activemq/broker.ks]/mode: mode changed '0644' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/package.ddl]/ensure: defined content as '{md5}ae1d49824b9b84d1a8f617c317147bea'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/package.rb]/ensure: defined content as '{md5}60d4b37d3844fc379a99d2b17a243620'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/puppet.ddl]/ensure: defined content as '{md5}05d975cbc1eb09af4522462a4afd55fa'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/puppet.rb]/ensure: defined content as '{md5}eb38cadaf62e34387d10783df4754cb2'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/puppetral.ddl]/ensure: defined content as '{md5}7f06f13953847e60818a681c1f2f168b'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/puppetral.rb]/ensure: defined content as '{md5}686272ee73d966e3f1d3482d7d7b61a8'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/service.ddl]/ensure: defined content as '{md5}3471e24142773d1bb7769c250e6b63d3'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/agent/service.rb]/ensure: defined content as '{md5}cbf84ed615eeda9789650b05ec504566'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/aggregate]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/aggregate/boolean_summary.ddl]/ensure: defined content as '{md5}aa581c71a6c7658bffdbaec81590f65d'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/aggregate/boolean_summary.rb]/ensure: defined content as '{md5}0546063313508d8aff603be320af3c44'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/application]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/application/package.rb]/ensure: defined content as '{md5}4e6571cdac3f6aa322c9f195693e1dbe'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/application/puppet.rb]/ensure: defined content as '{md5}13731d27f1276cdd3314f7fa30aa5eb1'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/application/service.rb]/ensure: defined content as '{md5}c95359f947af5f0d904fa3df80cb9820'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/data]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/data/puppet_data.ddl]/ensure: defined content as '{md5}5c9912bf5ae5dbc8762109a40c027c63'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/data/puppet_data.rb]/ensure: defined content as '{md5}606e87cd509addf22dd8e93d503d8262'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/data/resource_data.ddl]/ensure: defined content as '{md5}c4e3a46fd3c0b5d3990db0b8af1c747f'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/data/resource_data.rb]/ensure: defined content as '{md5}49be769fb403191af41f1b89697ce4cc'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/data/service_data.ddl]/ensure: defined content as '{md5}e7f7e0bc65ede56fc636505a400b1700'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/data/service_data.rb]/ensure: defined content as '{md5}bc651898c7dcd373d609c933fbd6021f'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/mco_plugin_versions]/ensure: defined content as '{md5}dc84f62ea4cd9253242d09dfb355220d'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/registration]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/registration/meta.rb]/ensure: defined content as '{md5}e939958bbbc0817e1779c336037e1849'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/security]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/security/sshkey.ddl]/ensure: defined content as '{md5}e92b26732d03496fb61ad3a1ed623f56'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/security/sshkey.rb]/ensure: defined content as '{md5}c3933bda744b78dd857f20aa5b61f75b'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/actionpolicy.rb]/ensure: defined content as '{md5}e4d6a7024ad7b28e019e7b9931eac027'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/package]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/package/base.rb]/ensure: defined content as '{md5}1bdb7e7a6dcfea6fd2a06c5dc39b7276'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/package/packagehelpers.rb]/ensure: defined content as '{md5}312aecc3b1ee75f97a989fea3e7a221d'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/package/puppetpackage.rb]/ensure: defined content as '{md5}865eec36ae05c30b072d3f5bd871fb52'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/package/yumHelper.py]/ensure: defined content as '{md5}40fa99ef10b84c38517f6b695a0af533'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/package/yumpackage.rb]/ensure: defined content as '{md5}256bde1567d8794ca929092462f5ae03'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/puppet_agent_mgr]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/puppet_agent_mgr.rb]/ensure: defined content as '{md5}8b80e880a2035fb1b9167106087ff049'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/puppet_agent_mgr/mgr_v2.rb]/ensure: defined content as '{md5}9a00171022ddb12d0a463e9cefeba481'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/puppet_agent_mgr/mgr_v3.rb]/ensure: defined content as '{md5}b5cb1a9b7311fc3769a3ccaabadeb694'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/puppet_agent_mgr/mgr_windows.rb]/ensure: defined content as '{md5}79a6cf3dac0177f6b9c22d5085324676'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/puppet_server_address_validation.rb]/ensure: defined content as '{md5}1c78390e33e71773e121a902ae91bfd4'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/puppetrunner.rb]/ensure: defined content as '{md5}a4fade81457455fbca9370249defbdf1'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/service]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/service/base.rb]/ensure: defined content as '{md5}abea7b8fadbf3425a7b68b49b9435ff6'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/util/service/puppetservice.rb]/ensure: defined content as '{md5}905db93e1c06ad5a7154fa2f9199f31c'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_resource_validator.ddl]/ensure: defined content as '{md5}3e45a28e1ba6c8d22ce40934c04b30b4'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_resource_validator.rb]/ensure: defined content as '{md5}567c7dc4d70ed0db7fd2626c77f6df41'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_server_address_validator.ddl]/ensure: defined content as '{md5}323e0b9647639fdf32cfbc63a82860f7'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_server_address_validator.rb]/ensure: defined content as '{md5}e84a56187809c5181b78b2819ee149fe'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_tags_validator.ddl]/ensure: defined content as '{md5}7ed95b2e5b210db83d12d5034f1ecb0f'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_tags_validator.rb]/ensure: defined content as '{md5}40b29498e867ba2ecf21dc08bc457d4e'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_variable_validator.ddl]/ensure: defined content as '{md5}58c9db4ca4503e4d692a016743e01627'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/puppet_variable_validator.rb]/ensure: defined content as '{md5}3cbca3af2e5884f2a807ef005a87151b'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/service_name.ddl]/ensure: defined content as '{md5}2812afa15108103042f706c2201e286b'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Plugins/File[/opt/puppetlabs/mcollective/plugins/mcollective/validator/service_name.rb]/ensure: defined content as '{md5}3f501a9ed252ce2dfe06a2e1e53845ab'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Logs/File[/var/log/puppetlabs/mcollective.log]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Logs/File[/var/log/puppetlabs/mcollective-audit.log]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/clients]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/ca.cert.pem]/ensure: defined content as '{md5}c4032843ed351459221d590adfb28db9'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/centos-72-x64-master.cert.pem]/ensure: defined content as '{md5}2625a416ec4818c6034bd7e2b9a71ecd'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/centos-72-x64-master.private_key.pem]/ensure: defined content as '{md5}6d9e37e91dcae5da10147512357cbddf'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/mcollective-private.pem]/ensure: defined content as '{md5}2a029131382b907534b782bc793dc0c8'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/mcollective-public.pem]/ensure: defined content as '{md5}e11a7106ff0f9a587615fce9ddd52923'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/clients/puppet-dashboard-public.pem]/ensure: defined content as '{md5}d65643bfa44845122d19f04f32dcd0bf'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Certs/File[/etc/puppetlabs/mcollective/ssl/clients/peadmin-public.pem]/ensure: defined content as '{md5}0a4b67257581692cf249dd85a2586e41'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Facter/File[/opt/puppetlabs/puppet/bin/refresh-mcollective-metadata]/ensure: defined content as '{md5}42bbd7fe0fd5d10cbfa6b92a90f7592b'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server::Facter/Cron[pe-mcollective-metadata]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server/File[/etc/puppetlabs/mcollective/server.cfg]/content: content changed '{md5}73e68cfd79153a49de6f5721ab60657b' to '{md5}11dd9165bbcabc6f67b1b8b1db071999'
+  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Server/File[/etc/puppetlabs/mcollective/server.cfg]/mode: mode changed '0644' to '0660'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Mcollective::Service/Service[mcollective]/ensure: ensure changed 'stopped' to 'running'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Pxp_agent/File[/etc/puppetlabs/pxp-agent/pxp-agent.conf]/ensure: defined content as '{md5}8d56337cfd2a016a9a212a6f000090d8'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Pxp_agent::Service/Service[pxp-agent]/ensure: ensure changed 'stopped' to 'running'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/File[/etc/puppetlabs/orchestration-services/conf.d/webserver.conf]/owner: owner changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/File[/etc/puppetlabs/orchestration-services/conf.d/webserver.conf]/group: group changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/File[/etc/puppetlabs/orchestration-services/conf.d/webserver.conf]/mode: mode changed '0644' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Pe_hocon_setting[orchestration-services.webserver.pcp-broker.ssl-ca-cert]/value: value changed ['/opt/puppetlabs/server/data/orchestration-services/certs/orchestration-services.localhost.ca_cert.pem'] to '/etc/puppetlabs/puppet/ssl/certs/ca.pem'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Pe_hocon_setting[orchestration-services.webserver.pcp-broker.ssl-cert]/value: value changed ['/opt/puppetlabs/server/data/orchestration-services/certs/orchestration-services.localhost.cert.pem'] to '/etc/puppetlabs/orchestration-services/ssl/centos-72-x64-master.cert.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Pe_hocon_setting[orchestration-services.webserver.pcp-broker.ssl-key]/value: value changed ['/opt/puppetlabs/server/data/orchestration-services/certs/orchestration-services.localhost.private_key.pem'] to '/etc/puppetlabs/orchestration-services/ssl/centos-72-x64-master.private_key.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Pe_hocon_setting[orchestration-services.webserver.pcp-broker.ssl-crl-path]/value: value changed ['/opt/puppetlabs/server/data/orchestration-services/certs/orchestration-services.localhost.ca_crl.pem'] to '/etc/puppetlabs/puppet/ssl/crl.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Pe_hocon_setting[orchestration-services.webserver.orchestrator]/ensure: removed
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Pe_hocon_setting[orchestration-services.web-router-service.orchestrator-service]/ensure: removed
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/File[/etc/puppetlabs/orchestration-services/ssl]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_puppet_authorization::Rule[puppetlabs environment cache]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs environment cache]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Pe_puppet_authorization::Rule[puppetlabs jruby pool]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs jruby pool]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Java_args[puppetserver]/Pe_ini_subsetting[pe-puppetserver_'Xmx']/value: value changed '2g' to '512m'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Java_args[puppetserver]/Pe_ini_subsetting[pe-puppetserver_'Xms']/value: value changed '2g' to '512m'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Fileserver_conf[pe_packages]/Augeas[fileserver.conf pe_packages]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_puppet_authorization::Rule[puppetlabs file sync api]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs file sync api]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Pe_puppet_authorization::Rule[puppetlabs file sync repo]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs file sync repo]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Certificate_authority/Pe_puppet_authorization::Rule[puppetlabs certificate status]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs certificate status]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Certificate_authority/Puppet_enterprise::Fileserver_conf[pe_modules]/Augeas[fileserver.conf pe_modules]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/install_modules.txt]/ensure: defined content as '{md5}5989d58f35cb7473f12236f8da50f74c'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_accounts-2.0.2-6-gd2f698c.tar.gz]/ensure: defined content as '{md5}c3c2553cee99eae2ff0b600be8aeea60'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_concat-1.1.2-7-g77ec55b.tar.gz]/ensure: defined content as '{md5}afda3cb036181703efb3c17f2f3701a5'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_console_prune-0.1.1-9-gfc256c0.tar.gz]/ensure: defined content as '{md5}63338cd0b44b0539c9cb82a91c60bd96'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_hocon-2015.3.0.tar.gz]/ensure: defined content as '{md5}407dead78fff2177c1d50425a5019a78'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_inifile-1.1.4-16-gcb39966.tar.gz]/ensure: defined content as '{md5}820fe5af207fff7816ac906a2d64a7cf'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_java_ks-1.2.4-37-g2d86015.tar.gz]/ensure: defined content as '{md5}000cbab6af4ef88b0c2a2ae96bca7cdd'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_nginx-2015.2.0-rc0.tar.gz]/ensure: defined content as '{md5}ce6be9f98dc1fb6f756c2b3bb037609b'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_postgresql-2015.3.0.tar.gz]/ensure: defined content as '{md5}9f829a93ded667017269504a3915476f'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_puppet_authorization-2015.3.0.tar.gz]/ensure: defined content as '{md5}5cf871898248fb852d33bbe0c0c65d85'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_puppetdbquery-2015.3.0.tar.gz]/ensure: defined content as '{md5}ff5c469dff077f98ea569c5729258b43'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_r10k-2015.3.0.tar.gz]/ensure: defined content as '{md5}54d114d2e6bb2a45b6a397c9efdb3542'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_razor-0.2.1-84-gbb045d2.tar.gz]/ensure: defined content as '{md5}b5232210a3fe56e7dc6252dc2535f1f2'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_repo-2015.3.3-4-gcf7f1ac.tar.gz]/ensure: defined content as '{md5}22e0498e0fe736bde310d498937e1e50'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-pe_staging-2015.3.0.tar.gz]/ensure: defined content as '{md5}3cb21d9aa51327c0eaabb643162a1dc5'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/puppetlabs-puppet_enterprise-2015.3.2.tar.gz]/ensure: defined content as '{md5}db83df9aefdae71ae1e7a73308651b4f'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/whitelist_modules.txt]/ensure: defined content as '{md5}f7338c6b96340b8a3fa811d52222ab48'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/File[/opt/puppetlabs/server/share/puppet_enterprise/pe_modules/install.sh]/ensure: defined content as '{md5}7d7c7ae102f0cebb31b3a772dabec764'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Exec[Extract PE Modules]: Triggered 'refresh' from 1 events
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Amq::Config/Puppet_enterprise::Amq::Config::Beans[centos-72-x64-master - beans]/Augeas[amq_augeas_base_beans_config]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Broker[remove default localhost]/Augeas[localhost: AMQ broker: remove default localhost]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Broker[centos-72-x64-master]/Augeas[centos-72-x64-master: AMQ broker: centos-72-x64-master]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Ssl_context[centos-72-x64-master-ssl-context]/Augeas[centos-72-x64-master: AMQ sslContext: centos-72-x64-master-ssl-context]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Management_context[centos-72-x64-master - managementContext]/Augeas[centos-72-x64-master: AMQ managementContext: centos-72-x64-master - managementContext]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Destination_policy_entry[centos-72-x64-master-topic->]/Augeas[centos-72-x64-master: AMQ destinationPolicyEntry: centos-72-x64-master-topic->]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Destination_policy_entry[centos-72-x64-master-queue->]/Augeas[centos-72-x64-master: AMQ destinationPolicyEntry: centos-72-x64-master-queue->]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Destination_policy_entry[centos-72-x64-master-queue-*.reply.>]/Augeas[centos-72-x64-master: AMQ destinationPolicyEntry: centos-72-x64-master-queue-*.reply.>]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Transport_connector[centos-72-x64-master-openwire-transport]/Augeas[centos-72-x64-master: AMQ transportConnector: centos-72-x64-master-openwire-transport]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Transport_connector[centos-72-x64-master-stomp-transport]/Augeas[centos-72-x64-master: AMQ transportConnector: centos-72-x64-master-stomp-transport]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Statistics_broker_plugin[centos-72-x64-master-statisticsBrokerPlugin]/Augeas[centos-72-x64-master: AMQ statisticsBrokerPlugin: centos-72-x64-master-statisticsBrokerPlugin]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Timestamping_broker_plugin[centos-72-x64-master-timeStampingBrokerPlugin]/Augeas[centos-72-x64-master: AMQ timeStampingBrokerPlugin: centos-72-x64-master-timeStampingBrokerPlugin]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Simple_authentication_user[centos-72-x64-master-simple_auth_user-mcollective]/Augeas[centos-72-x64-master: AMQ simpleAuthentication user: centos-72-x64-master-simple_auth_user-mcollective]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Authorization_plugin_entry[centos-72-x64-master-authorization-queue->]/Augeas[centos-72-x64-master: AMQ authorizationPlugin entry: centos-72-x64-master-authorization-queue->]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Authorization_plugin_entry[centos-72-x64-master-authorization-topic->]/Augeas[centos-72-x64-master: AMQ authorizationPlugin entry: centos-72-x64-master-authorization-topic->]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Authorization_plugin_entry[centos-72-x64-master-authorization-queue-mcollective.>]/Augeas[centos-72-x64-master: AMQ authorizationPlugin entry: centos-72-x64-master-authorization-queue-mcollective.>]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Authorization_plugin_entry[centos-72-x64-master-authorization-topic-mcollective.>]/Augeas[centos-72-x64-master: AMQ authorizationPlugin entry: centos-72-x64-master-authorization-topic-mcollective.>]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Authorization_plugin_entry[centos-72-x64-master-authorization-topic-ActiveMQ.Advisory.>]/Augeas[centos-72-x64-master: AMQ authorizationPlugin entry: centos-72-x64-master-authorization-topic-ActiveMQ.Advisory.>]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::Web_console[centos-72-x64-master - web console - false]/Augeas[AMQ webConsole: centos-72-x64-master - web console - false]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Amq::Broker/Puppet_enterprise::Amq::Config::System_usage[centos-72-x64-master - systemusage]/Augeas[centos-72-x64-master: AMQ systemUsage: centos-72-x64-master - systemusage]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Amq::Service/Service[pe-activemq]/ensure: ensure changed 'stopped' to 'running'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/orchestrator.conf]/owner: owner changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/orchestrator.conf]/group: group changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/orchestrator.conf]/mode: mode changed '0644' to '0640'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.master-url]/value: value changed ['https://puppet:8140'] to 'https://centos-72-x64-master:8140'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.puppetdb-url]/value: value changed ['https://puppetdb:8081'] to 'https://centos-72-x64-master:8081'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.classifier-service]/value: value changed ['https://classifier:4433/classifier-api'] to 'https://centos-72-x64-master:4433/classifier-api'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.rbac-service]/value: value changed ['https://rbac:4433/rbac-api'] to 'https://centos-72-x64-master:4433/rbac-api'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.pcp-broker-url]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.ssl-ca-cert]/value: value changed ['ca-cert.pem'] to '/etc/puppetlabs/puppet/ssl/certs/ca.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.ssl-cert]/value: value changed ['cert.pem'] to '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.cert.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.ssl-key]/value: value changed ['key.pem'] to '/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.private_key.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.pcp-timeout]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.database.subname]/value: value changed ['//localhost:5432/orchestrator'] to '//centos-72-x64-master:5432/pe-orchestrator?ssl=true&sslfactory=org.postgresql.ssl.jdbc4.LibPQFactory&sslmode=verify-full&sslrootcert=/etc/puppetlabs/puppet/ssl/certs/ca.pem'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.database.user]/value: value changed ['orchestrator'] to 'Orc3Str8R'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Orchestrator[orchestration-services]/Pe_hocon_setting[orchestration-services.orchestrator.database.password]/value: value changed ['orchestrator'] to '~!@#$%^*-/ aZ'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/pcp-broker.conf]/owner: owner changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/pcp-broker.conf]/group: group changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/pcp-broker.conf]/mode: mode changed '0644' to '0640'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/Pe_hocon_setting[orchestration-services.pcp-broker.accept-consumers]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/Pe_hocon_setting[orchestration-services.pcp-broker.delivery-consumers]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/authorization.conf]/owner: owner changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/authorization.conf]/group: group changed 'root' to 'pe-orchestration-services'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Pcp_broker[orchestration-services]/File[/etc/puppetlabs/orchestration-services/conf.d/authorization.conf]/mode: mode changed '0644' to '0640'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Certs[pe-orchestration-services]/File[/etc/puppetlabs/orchestration-services/ssl/centos-72-x64-master.cert.pem]/ensure: defined content as '{md5}2625a416ec4818c6034bd7e2b9a71ecd'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Certs[pe-orchestration-services]/File[/etc/puppetlabs/orchestration-services/ssl/centos-72-x64-master.private_key.pem]/ensure: defined content as '{md5}6d9e37e91dcae5da10147512357cbddf'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Certs[pe-orchestration-services]/File[/etc/puppetlabs/orchestration-services/ssl/centos-72-x64-master.public_key.pem]/ensure: defined content as '{md5}6922092b8d19eb3c21b2d2054a085f1b'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Certs[pe-internal-orchestrator]/File[/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.cert.pem]/ensure: defined content as '{md5}04353e73adbc657e29457461593d0c4d'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Certs[pe-internal-orchestrator]/File[/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.private_key.pem]/ensure: defined content as '{md5}1cb3a154ba66b684c1d55165029819a1'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Certs[pe-internal-orchestrator]/File[/etc/puppetlabs/orchestration-services/ssl/pe-internal-orchestrator.public_key.pem]/ensure: defined content as '{md5}fee8ba43674f2e8d33eacccb32630854'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Orchestrator/Puppet_enterprise::Trapperkeeper::Java_args[orchestration-services]/Pe_ini_subsetting[pe-orchestration-services_'Xms']/ensure: created
+  Notice: /Stage[main]/Pe_concat::Setup/File[/opt/puppetlabs/puppet/cache/pe_concat]/ensure: created
+  Notice: /Stage[main]/Pe_concat::Setup/File[/opt/puppetlabs/puppet/cache/pe_concat/bin]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Pe_concat::Setup/File[/opt/puppetlabs/puppet/cache/pe_concat/bin/concatfragments.sh]/ensure: defined content as '{md5}7bbe7c5fce25a5ddd20415d909ba44fc'
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat[/etc/puppetlabs/puppetserver/bootstrap.cfg]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat[/etc/puppetlabs/puppetserver/bootstrap.cfg]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat[/etc/puppetlabs/puppetserver/bootstrap.cfg]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments.concat]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat[/etc/puppetlabs/puppetserver/bootstrap.cfg]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments.concat.out]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat::Fragment[puppetserver certificate-authority-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver certificate-authority-service]/ensure: defined content as '{md5}386c6767f62267ecd4c8ebbf38205b91'
+  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_conf.d_auth.conf]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_conf.d_auth.conf/fragments]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_conf.d_auth.conf/fragments.concat]/ensure: created
+  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_conf.d_auth.conf/fragments.concat.out]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat::Fragment[00_header_/etc/puppetlabs/puppetserver/conf.d/auth.conf]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_conf.d_auth.conf/fragments/10_00_header__etc_puppetlabs_puppetserver_conf.d_auth.conf]/ensure: defined content as '{md5}98e633f69129801e017d35bad880f8be'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat::Fragment[99_footer_/etc/puppetlabs/puppetserver/conf.d/auth.conf]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_conf.d_auth.conf/fragments/10_99_footer__etc_puppetlabs_puppetserver_conf.d_auth.conf]/ensure: defined content as '{md5}7d9d25f71cb8a5aba86202540a20d405'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Exec[pe_concat_/etc/puppetlabs/puppetserver/conf.d/auth.conf]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_concat[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Exec[pe_concat_/etc/puppetlabs/puppetserver/conf.d/auth.conf]: Triggered 'refresh' from 4 events
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization[/etc/puppetlabs/puppetserver/conf.d/auth.conf]/Pe_hocon_setting[authorization.allow-header-cert-info./etc/puppetlabs/puppetserver/conf.d/auth.conf]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs catalog]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs catalog]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs certificate]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs certificate]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs crl]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs crl]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs csr]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs csr]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs environments]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs environments]/ensure: created[00;00m[00;33m
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs environment]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs environment]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs file]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs file]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs node]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs node]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs report]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs report]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs resource type]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs resource type]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs status]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs status]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Tk_authz/Pe_puppet_authorization::Rule[puppetlabs deny all]/Pe_puppet_authorization_hocon_rule[rule-puppetlabs deny all]/ensure: created
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[puppetserver:master jetty9-service]/Pe_concat::Fragment[puppetserver jetty9-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver jetty9-service]/ensure: defined content as '{md5}9ad7a87cc2b4b19be088e8307c55a9fe'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[pe-master-service]/Pe_concat::Fragment[puppetserver pe-master-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver pe-master-service]/ensure: defined content as '{md5}cf957034fe8f6f43bc3ee7f51c5ade11'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[request-handler-service]/Pe_concat::Fragment[puppetserver request-handler-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver request-handler-service]/ensure: defined content as '{md5}293dd489b96822c81b6b2cf74fbb420e'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[jruby-puppet-pooled-service]/Pe_concat::Fragment[puppetserver jruby-puppet-pooled-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver jruby-puppet-pooled-service]/ensure: defined content as '{md5}6ab00d0cb043bdc78de452e0c9410fd5'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[metrics-puppet-profiler-service]/Pe_concat::Fragment[puppetserver metrics-puppet-profiler-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver metrics-puppet-profiler-service]/ensure: defined content as '{md5}65ead768de3372c4e0dc0413386736f7'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[pe-metrics-service]/Pe_concat::Fragment[puppetserver pe-metrics-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver pe-metrics-service]/ensure: defined content as '{md5}99a6354ce0d6abfbcaa02e763ff3bd3e'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[puppet-server-config-service]/Pe_concat::Fragment[puppetserver puppet-server-config-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver puppet-server-config-service]/ensure: defined content as '{md5}2ae1c78b8a39d5e5e4fec6cdbfec4093'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[puppet-admin-service]/Pe_concat::Fragment[puppetserver puppet-admin-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver puppet-admin-service]/ensure: defined content as '{md5}4557e6371b9fde9075e3fe3f0fceb064'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[webrouting-service]/Pe_concat::Fragment[puppetserver webrouting-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver webrouting-service]/ensure: defined content as '{md5}448493bf4fcaf3ff5620806789b924fc'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[legacy-routes-service]/Pe_concat::Fragment[puppetserver legacy-routes-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver legacy-routes-service]/ensure: defined content as '{md5}1061605a7504383d4aa4a0e0f8a1c435'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[status-service]/Pe_concat::Fragment[puppetserver status-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver status-service]/ensure: defined content as '{md5}94a1afeaec9862224e0ea413660dc339'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[authorization-service]/Pe_concat::Fragment[puppetserver authorization-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver authorization-service]/ensure: defined content as '{md5}8cc75be0a7bc287193015434f2332e0e'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[scheduler-service]/Pe_concat::Fragment[puppetserver scheduler-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver scheduler-service]/ensure: defined content as '{md5}be34915aab4cd09c65eb9d5780bc9d72'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::Puppetserver/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[pe-jruby-metrics-service]/Pe_concat::Fragment[puppetserver pe-jruby-metrics-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver pe-jruby-metrics-service]/ensure: defined content as '{md5}93e77dfe22a761338b8c546be2bd9aaf'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[file-sync-client-service]/Pe_concat::Fragment[puppetserver file-sync-client-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver file-sync-client-service]/ensure: defined content as '{md5}f2b1a93f074714fad65bd74fb65d4abf'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[file-sync-web-service]/Pe_concat::Fragment[puppetserver file-sync-web-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver file-sync-web-service]/ensure: defined content as '{md5}b01179fd08befcb6a5a568e627a1eaf5'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[file-sync-versioned-code-service]/Pe_concat::Fragment[puppetserver file-sync-versioned-code-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver file-sync-versioned-code-service]/ensure: defined content as '{md5}a7fec07a849f6f250b94152f07e1e2b9'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Master::File_sync/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[file-sync-storage-service]/Pe_concat::Fragment[puppetserver file-sync-storage-service]/File[/opt/puppetlabs/puppet/cache/pe_concat/_etc_puppetlabs_puppetserver_bootstrap.cfg/fragments/10_puppetserver file-sync-storage-service]/ensure: defined content as '{md5}97e87680ade65fc099f2878f12e88567'
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat[/etc/puppetlabs/puppetserver/bootstrap.cfg]/Exec[pe_concat_/etc/puppetlabs/puppetserver/bootstrap.cfg]/returns: executed successfully
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat[/etc/puppetlabs/puppetserver/bootstrap.cfg]/Exec[pe_concat_/etc/puppetlabs/puppetserver/bootstrap.cfg]: Triggered 'refresh' from 21 events
+[00;00m[00;33m  Notice: /Stage[main]/Puppet_enterprise::Profile::Master/Puppet_enterprise::Trapperkeeper::Bootstrap_cfg[certificate-authority-service]/Pe_concat[/etc/puppetlabs/puppetserver/bootstrap.cfg]/File[/etc/puppetlabs/puppetserver/bootstrap.cfg]/content: content changed '{md5}5fb8b3f572c78837d6218add11b38292' to '{md5}9a5a7162d360b0d4aa86c94f19dcc04e'
+[00;00m[01;31m  Warning: Interrupt received; exiting...
+[00;00m[00;32m  Begin teardown
+[00;00m[00;32m  End teardown
+[00;00m
