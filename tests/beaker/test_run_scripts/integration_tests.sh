@@ -9,14 +9,15 @@ if [ $SCRIPT_BASE_PATH = "test_run_scripts" ]; then
   cd ../
 fi
 
-export pe_dist_dir="http://enterprise.delivery.puppetlabs.net/2015.3/ci-ready"
+#export pe_dist_dir="http://enterprise.delivery.puppetlabs.net/2015.3/ci-ready"
+export pe_dist_dir="/Users/kennysteinfeldt/Git/puppet-project/pe/"
 export GEM_SOURCE=http://rubygems.delivery.puppetlabs.net
 
 bundle install --without build development test --path .bundle/gems
 
 bundle exec beaker \
   --preserve-host \
-  --host configs/redhat-6-64mda.yml \
+  --host ~/Git/puppet-project/beaker-nodesets/centos-72-x64-pe.yml \
   --debug \
   --pre-suite pre-suite \
   --tests tests \

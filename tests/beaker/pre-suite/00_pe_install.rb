@@ -2,6 +2,9 @@ require 'master_manipulator'
 test_name 'FM-4614 - Cxx - Install Puppet Enterprise'
 
 # Init
+step 'Disable iptables'
+master.exec(Command.new("sudo su -c \"service firewalld stop \""), {:pty => true})
+
 step 'Install PE'
 install_pe
 
